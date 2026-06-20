@@ -46,5 +46,9 @@
   "footer.privacy": "Soukromí",
   "footer.support": "Podpora",
 
+  "consent.text": "Soubory cookie používáme k pochopení toho, jak se tento web používá.",
+  "consent.accept": "Přijmout",
+  "consent.decline": "Odmítnout",
+
   "langPicker.label": "Jazyk"
 }

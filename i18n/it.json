@@ -46,5 +46,9 @@
   "footer.privacy": "Privacy",
   "footer.support": "Assistenza",
 
+  "consent.text": "Utilizziamo i cookie per capire come viene usato questo sito.",
+  "consent.accept": "Accetta",
+  "consent.decline": "Rifiuta",
+
   "langPicker.label": "Lingua"
 }

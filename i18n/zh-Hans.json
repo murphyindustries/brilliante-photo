@@ -46,5 +46,9 @@
   "footer.privacy": "隐私",
   "footer.support": "支持",
 
+  "consent.text": "我们使用 Cookie 来了解本网站的使用情况。",
+  "consent.accept": "接受",
+  "consent.decline": "拒绝",
+
   "langPicker.label": "语言"
 }

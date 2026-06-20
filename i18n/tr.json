@@ -46,5 +46,9 @@
   "footer.privacy": "Gizlilik",
   "footer.support": "Destek",
 
+  "consent.text": "Bu sitenin nasıl kullanıldığını anlamak için çerezleri kullanıyoruz.",
+  "consent.accept": "Kabul et",
+  "consent.decline": "Reddet",
+
   "langPicker.label": "Dil"
 }

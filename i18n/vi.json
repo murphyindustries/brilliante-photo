@@ -46,5 +46,9 @@
   "footer.privacy": "Quyền riêng tư",
   "footer.support": "Hỗ trợ",
 
+  "consent.text": "Chúng tôi sử dụng cookie để hiểu cách trang web này được sử dụng.",
+  "consent.accept": "Chấp nhận",
+  "consent.decline": "Từ chối",
+
   "langPicker.label": "Ngôn ngữ"
 }

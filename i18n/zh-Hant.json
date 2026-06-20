@@ -46,5 +46,9 @@
   "footer.privacy": "隱私權",
   "footer.support": "支援",
 
+  "consent.text": "我們使用 Cookie 來了解本網站的使用情況。",
+  "consent.accept": "接受",
+  "consent.decline": "拒絕",
+
   "langPicker.label": "語言"
 }

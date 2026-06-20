@@ -46,5 +46,9 @@
   "footer.privacy": "الخصوصية",
   "footer.support": "الدعم",
 
+  "consent.text": "نستخدم ملفات تعريف الارتباط لفهم كيفية استخدام هذا الموقع.",
+  "consent.accept": "قبول",
+  "consent.decline": "رفض",
+
   "langPicker.label": "اللغة"
 }

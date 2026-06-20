@@ -46,5 +46,9 @@
   "footer.privacy": "தனியுரிமை",
   "footer.support": "ஆதரவு",
 
+  "consent.text": "இந்த தளம் எவ்வாறு பயன்படுத்தப்படுகிறது என்பதைப் புரிந்துகொள்ள நாங்கள் குக்கீகளைப் பயன்படுத்துகிறோம்.",
+  "consent.accept": "ஏற்க",
+  "consent.decline": "நிராகரி",
+
   "langPicker.label": "மொழி"
 }

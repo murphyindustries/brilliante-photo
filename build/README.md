@@ -68,6 +68,22 @@ the **in-app resources**, not translated ad hoc:
 - Format/tech tokens are left in English everywhere: HDR, Ultra HDR, HEIC, AVIF,
   JPEG XR, SDR, PNG, EXIF, GPS, Windows, Android, Microsoft Store, Brilliante.
 
+## Analytics & cookie consent
+
+Google Analytics 4 with **Consent Mode v2**, all in one static file: **`/analytics.js`**.
+
+- **Set the Measurement ID in one place** — the `GA_ID` constant at the top of
+  `analytics.js` (looks like `G-XXXXXXXXXX`). No rebuild needed; it's a static file
+  referenced by every page (`<script src="/analytics.js">`), including the privacy page.
+- While the ID is the placeholder (`G-XXXXXXXXXX`), GA is **not** loaded and the cookie
+  banner stays hidden — safe to deploy without tracking anything.
+- Consent defaults to **denied**. The banner flips `analytics_storage` to `granted`
+  only on Accept; the choice is stored in `localStorage` (`brilliante-analytics-consent`)
+  so returning visitors aren't asked again. Decline stores `denied`.
+- The banner **markup** lives in the homepage template (localized via the `consent.*`
+  keys in `i18n/`) and inline in `privacy/index.html` (English). The banner **behavior**
+  (show/hide, wiring the buttons) is all in `analytics.js`.
+
 ## Adding a locale
 
 All 30 of the app/store locales are now live. To add another:

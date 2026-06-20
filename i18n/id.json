@@ -46,5 +46,9 @@
   "footer.privacy": "Privasi",
   "footer.support": "Dukungan",
 
+  "consent.text": "Kami menggunakan cookie untuk memahami cara situs ini digunakan.",
+  "consent.accept": "Terima",
+  "consent.decline": "Tolak",
+
   "langPicker.label": "Bahasa"
 }

@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Privacy Policy — Brilliante Photo Viewer</title>
 
+<!-- Site analytics: GA4 with Consent Mode v2 (loads only after consent). ID in /analytics.js -->
+<script src="/analytics.js"></script>
+
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/icon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="/icon-256.png">
@@ -131,6 +134,29 @@
     .wrap { padding: 0 22px; }
     .footline { justify-content: center; text-align: center; }
   }
+
+  /* Cookie consent banner (shared behavior via /analytics.js) */
+  .consent {
+    position: fixed; inset-inline: 16px; bottom: 16px; z-index: 50;
+    max-width: 660px; margin-inline: auto;
+    display: flex; flex-wrap: wrap; align-items: center; gap: 12px 18px;
+    padding: 15px 20px; border-radius: 14px;
+    background: #160d3c; border: 1px solid var(--rule);
+    box-shadow: 0 18px 46px rgba(0, 0, 0, 0.55);
+  }
+  .consent[hidden] { display: none; }
+  .consent-text { flex: 1 1 280px; font-size: 0.88rem; color: var(--muted); line-height: 1.5; }
+  .consent-text a { color: var(--ink); }
+  .consent-actions { display: flex; gap: 10px; flex-shrink: 0; }
+  .consent-btn {
+    font: inherit; font-size: 0.86rem; font-weight: 600; cursor: pointer;
+    padding: 9px 18px; border-radius: 9px; border: 1px solid transparent;
+    background: #f4f1ff; color: #16102e;
+    transition: transform 0.15s ease, border-color 0.2s ease, color 0.2s ease;
+  }
+  .consent-btn:hover { transform: translateY(-1px); }
+  .consent-btn.ghost { background: transparent; color: var(--muted); border-color: var(--rule); }
+  .consent-btn.ghost:hover { color: var(--ink); border-color: rgba(255, 255, 255, 0.3); }
 </style>
 </head>
 <body>
@@ -179,7 +205,7 @@
         <p class="effective">Effective June&nbsp;15, 2026 &middot; Last updated June&nbsp;15, 2026</p>
 
         <div class="tldr">
-          <p style="margin:0;"><strong>The short version:</strong> Brilliante Photo Viewer runs entirely on your PC. It has no accounts and no sign-in, collects no personal data, shows no ads, and includes no analytics or tracking. Your photos are never uploaded or sent anywhere by the app.</p>
+          <p style="margin:0;"><strong>The short version:</strong> The Brilliante app runs entirely on your PC. It has no accounts and no sign-in, collects no personal data, shows no ads, and includes no analytics or tracking; your photos are never uploaded or sent anywhere. This website uses privacy-friendly analytics only if you accept cookies — see <a href="#website">This website</a> below.</p>
         </div>
 
         <h2>Information we collect</h2>
@@ -201,6 +227,9 @@
 
         <h2>Children&rsquo;s privacy</h2>
         <p>Brilliante collects no personal information from anyone, including children.</p>
+
+        <h2 id="website">This website</h2>
+        <p>This policy covers the <strong>Brilliante app</strong>. The website you are reading (brilliante.photo) uses <strong>Google Analytics</strong> to understand how visitors use the site — for example, which pages are popular and which languages are in demand. Analytics cookies are set <strong>only if you accept them</strong> in the cookie banner; if you decline, no analytics cookies are stored. You can change your choice at any time by clearing this site&rsquo;s data in your browser. When enabled, this measurement data is processed by Google under the <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google&nbsp;Privacy&nbsp;Policy</a>. The app itself stays analytics-free and processes your photos entirely on your device.</p>
 
         <h2>Changes to this policy</h2>
         <p>If this policy changes, we will update this page and revise the date above. Any material changes will be reflected here.</p>
@@ -228,5 +257,14 @@
       </div>
     </div>
   </footer>
+
+  <!-- Cookie consent banner — wired by /analytics.js -->
+  <div class="consent" id="consent-banner" hidden>
+    <p class="consent-text">We use cookies to understand how this site is used.</p>
+    <div class="consent-actions">
+      <button type="button" class="consent-btn ghost" id="consent-decline">Decline</button>
+      <button type="button" class="consent-btn" id="consent-accept">Accept</button>
+    </div>
+  </div>
 </body>
 </html>

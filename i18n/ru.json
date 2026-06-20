@@ -46,5 +46,9 @@
   "footer.privacy": "Конфиденциальность",
   "footer.support": "Поддержка",
 
+  "consent.text": "Мы используем файлы cookie, чтобы понять, как используется этот сайт.",
+  "consent.accept": "Принять",
+  "consent.decline": "Отклонить",
+
   "langPicker.label": "Язык"
 }

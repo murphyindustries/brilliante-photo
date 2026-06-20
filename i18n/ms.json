@@ -46,5 +46,9 @@
   "footer.privacy": "Privasi",
   "footer.support": "Sokongan",
 
+  "consent.text": "Kami menggunakan kuki untuk memahami cara laman ini digunakan.",
+  "consent.accept": "Terima",
+  "consent.decline": "Tolak",
+
   "langPicker.label": "Bahasa"
 }

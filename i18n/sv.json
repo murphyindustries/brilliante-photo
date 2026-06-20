@@ -46,5 +46,9 @@
   "footer.privacy": "Integritet",
   "footer.support": "Support",
 
+  "consent.text": "Vi använder cookies för att förstå hur den här webbplatsen används.",
+  "consent.accept": "Acceptera",
+  "consent.decline": "Avvisa",
+
   "langPicker.label": "Språk"
 }

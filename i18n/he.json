@@ -46,5 +46,9 @@
   "footer.privacy": "פרטיות",
   "footer.support": "תמיכה",
 
+  "consent.text": "אנו משתמשים בעוגיות כדי להבין כיצד נעשה שימוש באתר זה.",
+  "consent.accept": "אישור",
+  "consent.decline": "דחייה",
+
   "langPicker.label": "שפה"
 }

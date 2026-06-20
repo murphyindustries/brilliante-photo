@@ -46,5 +46,9 @@
   "footer.privacy": "Tietosuoja",
   "footer.support": "Tuki",
 
+  "consent.text": "Käytämme evästeitä ymmärtääksemme, miten tätä sivustoa käytetään.",
+  "consent.accept": "Hyväksy",
+  "consent.decline": "Hylkää",
+
   "langPicker.label": "Kieli"
 }

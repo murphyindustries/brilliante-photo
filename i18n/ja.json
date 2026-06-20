@@ -46,5 +46,9 @@
   "footer.privacy": "プライバシー",
   "footer.support": "サポート",
 
+  "consent.text": "このサイトの利用状況を把握するためにクッキーを使用しています。",
+  "consent.accept": "同意する",
+  "consent.decline": "拒否",
+
   "langPicker.label": "言語"
 }

@@ -46,5 +46,9 @@
   "footer.privacy": "Privacy",
   "footer.support": "Suporta",
 
+  "consent.text": "Gumagamit kami ng cookies para maunawaan kung paano ginagamit ang site na ito.",
+  "consent.accept": "Tanggapin",
+  "consent.decline": "Tanggihan",
+
   "langPicker.label": "Wika"
 }

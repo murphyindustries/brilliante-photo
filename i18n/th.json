@@ -46,5 +46,9 @@
   "footer.privacy": "ความเป็นส่วนตัว",
   "footer.support": "การสนับสนุน",
 
+  "consent.text": "เราใช้คุกกี้เพื่อทำความเข้าใจว่ามีการใช้งานเว็บไซต์นี้อย่างไร",
+  "consent.accept": "ยอมรับ",
+  "consent.decline": "ปฏิเสธ",
+
   "langPicker.label": "ภาษา"
 }

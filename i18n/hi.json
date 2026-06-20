@@ -46,5 +46,9 @@
   "footer.privacy": "गोपनीयता",
   "footer.support": "सहायता",
 
+  "consent.text": "हम यह समझने के लिए कुकीज़ का उपयोग करते हैं कि इस साइट का उपयोग कैसे होता है।",
+  "consent.accept": "स्वीकार करें",
+  "consent.decline": "अस्वीकार करें",
+
   "langPicker.label": "भाषा"
 }

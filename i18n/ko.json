@@ -46,5 +46,9 @@
   "footer.privacy": "개인정보",
   "footer.support": "지원",
 
+  "consent.text": "이 사이트의 이용 방식을 파악하기 위해 쿠키를 사용합니다.",
+  "consent.accept": "동의",
+  "consent.decline": "거부",
+
   "langPicker.label": "언어"
 }

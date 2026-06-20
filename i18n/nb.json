@@ -46,5 +46,9 @@
   "footer.privacy": "Personvern",
   "footer.support": "Brukerstøtte",
 
+  "consent.text": "Vi bruker informasjonskapsler for å forstå hvordan dette nettstedet brukes.",
+  "consent.accept": "Godta",
+  "consent.decline": "Avvis",
+
   "langPicker.label": "Språk"
 }

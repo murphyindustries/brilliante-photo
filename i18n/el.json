@@ -46,5 +46,9 @@
   "footer.privacy": "Απόρρητο",
   "footer.support": "Υποστήριξη",
 
+  "consent.text": "Χρησιμοποιούμε cookies για να κατανοήσουμε πώς χρησιμοποιείται αυτός ο ιστότοπος.",
+  "consent.accept": "Αποδοχή",
+  "consent.decline": "Απόρριψη",
+
   "langPicker.label": "Γλώσσα"
 }
