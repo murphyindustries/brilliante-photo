@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<title>HDR support check — Brilliante</title>
+<style>
+  :root { color-scheme: dark; --bg:#0a0712; --card:#140e26; --rule:#2a2342; --ink:#eceaf4;
+          --muted:#a59fc0; --amber:#f4b740; --green:#39d98a; --red:#ff7a7a; --blue:#5aa6ff; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body { background: var(--bg); color: var(--ink);
+         font: 16px/1.55 -apple-system, system-ui, "Segoe UI", Roboto, sans-serif;
+         padding: max(18px, env(safe-area-inset-top)) 18px calc(40px + env(safe-area-inset-bottom)); }
+  .wrap { max-width: 640px; margin: 0 auto; }
+  h1 { font-size: 1.4rem; margin: 0 0 4px; letter-spacing: -0.01em; }
+  .lede { color: var(--muted); margin: 0 0 22px; font-size: .95rem; }
+  .card { background: var(--card); border: 1px solid var(--rule); border-radius: 16px;
+          padding: 16px 16px 18px; margin: 0 0 18px; }
+  h2 { font-size: 1.02rem; margin: 0 0 10px; }
+  .step { color: var(--amber); font-weight: 700; font-size: .8rem; letter-spacing: .08em;
+          text-transform: uppercase; margin: 0 0 6px; }
+
+  .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 4px 0 14px; }
+  figure { margin: 0; }
+  .pair img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block;
+              border-radius: 12px; border: 1px solid var(--rule); background:#000; }
+  figcaption { text-align: center; font-size: .82rem; color: var(--muted); margin-top: 6px; }
+  .ask { font-weight: 600; margin: 6px 0 12px; }
+  .btns { display: flex; flex-wrap: wrap; gap: 10px; }
+  button { font: inherit; font-weight: 600; color: var(--ink); background:#1d1638;
+           border: 1px solid var(--rule); border-radius: 12px; padding: 12px 16px;
+           cursor: pointer; flex: 1 1 160px; min-height: 48px; }
+  button:active { transform: translateY(1px); }
+  button.sel { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(90,166,255,.25); }
+  button.glow { border-color: var(--green); }
+  button.same { border-color: var(--amber); }
+
+  .verdict { border-radius: 12px; padding: 13px 14px; margin: 14px 0 0; font-weight: 600;
+             border:1px solid var(--rule); background:#100a22; }
+  .verdict.ok   { border-color: var(--green); color: var(--green); }
+  .verdict.warn { border-color: var(--amber); color: var(--amber); }
+  .verdict.sdr  { border-color: var(--blue);  color: var(--blue);  }
+
+  .report { margin-top: 4px; }
+  .report .box { display:flex; gap:8px; align-items:stretch; }
+  pre { flex:1; margin:0; background:#0c0818; border:1px solid var(--rule); border-radius:12px;
+        padding:12px; overflow:auto; font-family: ui-monospace, Menlo, monospace; font-size:.8rem;
+        color:#cdd6e3; white-space: pre-wrap; word-break: break-word; }
+  #copy { flex: 0 0 auto; }
+  .hint { color: var(--muted); font-size: .85rem; margin: 10px 0 0; }
+  table { border-collapse: collapse; width:100%; font-size:.88rem; }
+  td { padding: 5px 4px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+  td.k { color: var(--muted); }
+  td.v { text-align: right; font-family: ui-monospace, Menlo, monospace; }
+  .yes { color: var(--green); } .no { color: var(--red); } .na { color: var(--muted); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>HDR support check</h1>
+  <p class="lede">This quick page helps us see whether your browser shows real HDR photos correctly.
+     It runs entirely on your device — nothing is uploaded. Takes about 15 seconds.</p>
+
+  <div class="card">
+    <p class="step">Step 1 · Look</p>
+    <h2>Do these two photos look different?</h2>
+    <div class="pair">
+      <figure><img id="img-hdr" src="/demo-hdr.jpg" alt="HDR photo" decoding="async"><figcaption>A — HDR photo</figcaption></figure>
+      <figure><img id="img-sdr" src="/demo-sdr.jpg" alt="Standard photo" decoding="async"><figcaption>B — standard photo</figcaption></figure>
+    </div>
+    <p class="ask">If your screen shows HDR, photo <b>A</b> should look noticeably brighter / more vivid
+       — its highlights (sky, water glints) should <i>glow</i>. If A and B look the same, HDR isn’t showing.</p>
+    <div class="btns">
+      <button id="b-glow" class="glow">A glows brighter ✨</button>
+      <button id="b-same" class="same">They look the same</button>
+    </div>
+    <div id="verdict" class="verdict" hidden></div>
+  </div>
+
+  <div class="card report">
+    <p class="step">Step 2 · Send</p>
+    <h2>Copy this line back to us</h2>
+    <div class="box">
+      <pre id="result">(tap a button above first)</pre>
+      <button id="copy">Copy</button>
+    </div>
+    <p class="hint">Paste it into your reply / message. That single line tells us everything we need.</p>
+  </div>
+
+  <div class="card">
+    <p class="step">Details</p>
+    <h2>What your browser reports</h2>
+    <table id="details"><tbody></tbody></table>
+    <p class="hint" id="ua"></p>
+  </div>
+</div>
+
+<script>
+(function () {
+  var mm = function (q) { try { return window.matchMedia(q).matches; } catch (e) { return null; } };
+  var sup = function (p, v) { try { return CSS.supports(p, v); } catch (e) { return null; } };
+  var ua = navigator.userAgent;
+
+  // ---- environment parsing ----
+  var isChromium = /Chrome|Chromium|CriOS|Edg|EdgiOS|OPR|SamsungBrowser/.test(ua);
+  var isFirefox  = /Firefox|FxiOS/.test(ua);
+  var isWebKit   = /AppleWebKit/.test(ua);
+  var isSafari   = isWebKit && !isChromium && !isFirefox;
+  var iosM = ua.match(/(iPhone|iPad|iPod).*?OS (\d+)[_.](\d+)/);
+  var verM = ua.match(/Version\/(\d+(?:\.\d+)?)/);
+  var os, osVer, device;
+  if (iosM) { device = iosM[1]; os = (iosM[1] === 'iPad' ? 'iPadOS' : 'iOS'); osVer = iosM[2] + '.' + iosM[3]; }
+  else if (/Mac OS X/.test(ua)) { os = 'macOS'; osVer = 'hidden(UA frozen)'; device = 'Mac'; }
+  else if (/Android/.test(ua)) { os = 'Android'; osVer = (ua.match(/Android (\d+(?:\.\d+)?)/) || [])[1] || '?'; device='Android'; }
+  else if (/Windows/.test(ua)) { os = 'Windows'; osVer = '?'; device='PC'; }
+  else { os = '?'; osVer = '?'; device='?'; }
+  var browser = isChromium ? 'Chromium-based' : isFirefox ? 'Firefox' : isSafari ? 'Safari' : 'other';
+  var browserVer = verM ? verM[1] : (ua.match(/(?:Chrome|CriOS|Firefox|FxiOS|Edg)\/(\d+(?:\.\d+)?)/) || [])[1] || '?';
+
+  var sig = {
+    displayHDR: mm('(dynamic-range: high)'),
+    videoHDR: mm('(video-dynamic-range: high)'),
+    drlNoLimit: sup('dynamic-range-limit', 'no-limit'),
+    drlStandard: sup('dynamic-range-limit', 'standard'),
+    p3: mm('(color-gamut: p3)'),
+    dpr: window.devicePixelRatio
+  };
+
+  // ---- details table ----
+  var rows = [
+    ['Device / OS', device + ' · ' + os + ' ' + osVer],
+    ['Browser', browser + ' ' + browserVer],
+    ['Display is HDR-capable', sig.displayHDR],
+    ['Video HDR', sig.videoHDR],
+    ['Supports dynamic-range-limit', sig.drlNoLimit],
+    ['Wide color (P3)', sig.p3],
+    ['Pixel ratio', sig.dpr]
+  ];
+  var tb = document.querySelector('#details tbody');
+  rows.forEach(function (r) {
+    var v = r[1], cls = 'na', txt = v;
+    if (v === true) { cls = 'yes'; txt = 'yes'; }
+    else if (v === false) { cls = 'no'; txt = 'no'; }
+    else if (v === null) { cls = 'na'; txt = 'n/a'; }
+    var tr = document.createElement('tr');
+    tr.innerHTML = '<td class="k">' + r[0] + '</td><td class="v ' + cls + '">' + txt + '</td>';
+    tb.appendChild(tr);
+  });
+  document.getElementById('ua').textContent = ua;
+
+  // ---- self-report ----
+  var human = null;
+  var bGlow = document.getElementById('b-glow'), bSame = document.getElementById('b-same');
+  var vEl = document.getElementById('verdict'), rEl = document.getElementById('result');
+
+  function tf(v) { return v === true ? 'yes' : v === false ? 'no' : 'n/a'; }
+  function render() {
+    var line = 'HDR-CHECK | ' + device + '/' + os + ' ' + osVer + ' | ' + browser + ' ' + browserVer +
+               ' | display-HDR=' + tf(sig.displayHDR) +
+               ' | dynamic-range-limit=' + tf(sig.drlNoLimit) +
+               ' | sees-HDR=' + (human || '?');
+    rEl.textContent = line;
+
+    vEl.hidden = false;
+    if (sig.displayHDR === false) {
+      vEl.className = 'verdict sdr';
+      vEl.textContent = 'Your display is standard-range (SDR), so an HDR preview isn’t expected here. That’s normal.';
+    } else if (human === 'GLOWS') {
+      vEl.className = 'verdict ok';
+      vEl.textContent = '✅ Your browser is showing HDR correctly. Thanks!';
+    } else if (human === 'SAME') {
+      vEl.className = 'verdict warn';
+      vEl.textContent = '⚠️ Your display is HDR-capable but this browser isn’t showing the HDR photo — this is exactly the case we’re investigating. Thank you, this is the data point we need.';
+    } else {
+      vEl.hidden = true;
+    }
+  }
+  function pick(which, el, other) {
+    human = which; el.classList.add('sel'); other.classList.remove('sel'); render();
+  }
+  bGlow.addEventListener('click', function () { pick('GLOWS', bGlow, bSame); });
+  bSame.addEventListener('click', function () { pick('SAME', bSame, bGlow); });
+
+  document.getElementById('copy').addEventListener('click', function () {
+    var t = rEl.textContent;
+    var done = function () { var b = document.getElementById('copy'); b.textContent = 'Copied ✓';
+      setTimeout(function () { b.textContent = 'Copy'; }, 1500); };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(t).then(done, function () { done(); });
+    } else { done(); }
+  });
+
+  render();           // populate result line up front (sees-HDR=? until they tap)
+  vEl.hidden = true;  // but hide the verdict until they answer
+})();
+</script>
+</body>
+</html>
